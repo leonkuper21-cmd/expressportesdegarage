@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Express Portes de Garage — Montréal | FR / EN</title>
+  <meta name="description" content="Express Portes de Garage à Montréal — installation, réparation et entretien de portes de garage. Rive-Sud & West Island. Paiement en ligne. FR/EN." />
+  <!-- GA4 loader; Measurement ID injected from localStorage via Admin panel -->
+  <script>
+    (function(){
+      const id = localStorage.getItem('ga4_id');
+      if(id){
+        const s = document.createElement('script');
+        s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', id);
+      }
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230a66c2'/%3E%3Cpath d='M10 48h44v4H10zM14 16h36v24H14zM18 20h28v4H18zm0 8h28v4H18zm0 8h16v4H18z' fill='white'/%3E%3C/svg%3E" />
+  <style>
+    :root { --blue:#0a66c2; --red:#e10600; --dark:#0f172a; --muted:#64748b; --bg:#f8fafc; --card:#ffffff; }
+    * { box-sizing:border-box }
+    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans","Helvetica Neue",sans-serif;color:var(--dark);background:var(--bg)}
+    a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+    .container{max-width:1200px;margin:0 auto;padding:1rem}
+    header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid #e2e8f0;z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:800}
+    .brand-mark{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#1b8ae6);display:grid;place-items:center;color:#fff;font-weight:900;overflow:hidden}
+    .brand-mark img{width:100%;height:100%;object-fit:cover;display:none}
+    .cta-group{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem .9rem;border-radius:12px;border:1px solid #e2e8f0;background:#fff;font-weight:600}
+    .btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+    .btn.danger{background:var(--red);color:#fff;border-color:var(--red)}
+    .lang-toggle{display:flex;gap:.25rem;align-items:center;border:1px solid #e2e8f0;border-radius:999px;padding:.25rem;background:#fff}
+    .pill{padding:.35rem .7rem;border-radius:999px;font-weight:700;color:#0f172a}
+    .pill.active{background:var(--dark);color:#fff}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:1.25rem;padding:clamp(1rem,2.5vw,2rem) 0}
+    .hero-card{background:linear-gradient(180deg,#ffffff,#f3f6fb);border:1px solid #e2e8f0;padding:clamp(1rem,2.5vw,2rem);border-radius:18px;box-shadow:0 10px 24px rgba(2,6,23,.06)}
+    .hero h1{font-size:clamp(1.8rem,2.8vw,3rem);line-height:1.1;margin:.25rem 0 .75rem}
+    .sub{color:var(--muted);font-size:clamp(1rem,2vw,1.125rem)}
+    .badge{display:inline-block;background:var(--red);color:#fff;padding:.35rem .6rem;border-radius:999px;font-weight:800;letter-spacing:.3px;font-size:.8rem}
+    .illus{aspect-ratio:16/11;background:conic-gradient(from 200deg at 70% 40%,#dbeafe,#bfdbfe,#e2e8f0,#fff);border:1px solid #e2e8f0;border-radius:18px;display:grid;place-items:center;position:relative;overflow:hidden}
+    .door{width:68%;max-width:520px}
+    .section{padding:clamp(1.5rem,4vw,3rem) 0}
+    .grid{display:grid;gap:1rem}
+    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;padding:1rem;box-shadow:0 6px 16px rgba(2,6,23,.04)}
+    .card h3{margin:.2rem 0 .5rem}
+    .list{margin:.5rem 0 0;padding-left:1.2rem}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .muted{color:var(--muted)}
+    footer{background:#0b1220;color:#e5e7eb;padding:2rem 0;margin-top:2rem}
+    footer a{color:#93c5fd}
+    .copyright{color:#94a3b8;font-size:.9rem}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .two-col .col{padding:1rem;border:1px solid #e2e8f0;border-radius:14px;background:#fff}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .pay-box{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.75rem}
+    .note{font-size:.9rem;color:#64748b}
+    .tag{display:inline-block;border:1px solid #e2e8f0;border-radius:999px;padding:.2rem .55rem;margin-right:.25rem;font-size:.85rem}
+    .admin-fab{position:fixed;right:14px;bottom:14px;border:none;border-radius:50%;width:52px;height:52px;background:var(--blue);color:#fff;font-size:20px;box-shadow:0 8px 20px rgba(2,6,23,.25);cursor:pointer}
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,.5);display:none;align-items:center;justify-content:center;padding:1rem}
+    .modal .panel{background:#fff;max-width:560px;width:100%;border-radius:14px;border:1px solid #e2e8f0;padding:1rem}
+    .modal .row{margin:.5rem 0}
+    .modal label{display:block;font-weight:700;margin:.2rem 0}
+    .modal input[type="text"], .modal input[type="url"]{width:100%;padding:.6rem;border:1px solid #cbd5e1;border-radius:10px}
+    .modal .actions{display:flex;gap:.5rem;justify-content:flex-end;margin-top:.75rem}
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
+      .cols-3{grid-template-columns:1fr}
+      .cols-2{grid-template-columns:1fr}
+    }
+    [data-lang="fr"] .fr { display:block } [data-lang="fr"] .en { display:none }
+    [data-lang="en"] .fr { display:none } [data-lang="en"] .en { display:block }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      const root=document.documentElement;
+      const savedLang=localStorage.getItem('lang')||'fr';
+      root.setAttribute('data-lang',savedLang);
+      function setLang(lang){
+        root.setAttribute('data-lang',lang);
+        localStorage.setItem('lang',lang);
+        document.getElementById('lang-fr').classList.toggle('active',lang==='fr');
+        document.getElementById('lang-en').classList.toggle('active',lang==='en');
+      }
+      document.querySelectorAll('[data-set-lang]').forEach(btn=>{
+        btn.addEventListener('click',()=>setLang(btn.getAttribute('data-set-lang')));
+      });
+      const stripeBtn = document.getElementById('pay-stripe');
+      const paypalBtn = document.getElementById('pay-paypal');
+      stripeBtn.href = localStorage.getItem('stripe_link') || '#';
+      paypalBtn.href = localStorage.getItem('paypal_link') || '#';
+      const logoImg = document.getElementById('logo-img');
+      const savedLogo = localStorage.getItem('logo_dataurl');
+      if(savedLogo){
+        logoImg.src = savedLogo; logoImg.style.display = 'block';
+        document.querySelector('.brand-mark').style.background='transparent';
+        document.getElementById('logo-fallback').style.display='none';
+      }
+      const modal = document.getElementById('admin-modal');
+      const openBtn = document.getElementById('admin-open');
+      const closeBtn = document.getElementById('admin-close');
+      const saveBtn = document.getElementById('admin-save');
+      const clearBtn = document.getElementById('admin-clear');
+      const fStripe = document.getElementById('f-stripe');
+      const fPaypal = document.getElementById('f-paypal');
+      const fGa = document.getElementById('f-ga');
+      const fLogo = document.getElementById('f-logo');
+      function refreshForm(){
+        fStripe.value = localStorage.getItem('stripe_link') || '';
+        fPaypal.value = localStorage.getItem('paypal_link') || '';
+        fGa.value = localStorage.getItem('ga4_id') || '';
+      }
+      openBtn.addEventListener('click',()=>{ refreshForm(); modal.style.display='flex'; });
+      closeBtn.addEventListener('click',()=>{ modal.style.display='none'; });
+      saveBtn.addEventListener('click',()=>{
+        localStorage.setItem('stripe_link', fStripe.value.trim());
+        localStorage.setItem('paypal_link', fPaypal.value.trim());
+        localStorage.setItem('ga4_id', fGa.value.trim());
+        stripeBtn.href = fStripe.value.trim() || '#';
+        paypalBtn.href = fPaypal.value.trim() || '#';
+        alert('Saved! Refresh page to initialize GA with your ID.');
+        modal.style.display='none';
+      });
+      clearBtn.addEventListener('click',()=>{
+        if(confirm('Clear saved settings (payment links, GA, logo)?')){
+          localStorage.removeItem('stripe_link');
+          localStorage.removeItem('paypal_link');
+          localStorage.removeItem('ga4_id');
+          localStorage.removeItem('logo_dataurl');
+          location.reload();
+        }
+      });
+      fLogo.addEventListener('change', (e)=>{
+        const file = e.target.files[0];
+        if(!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev)=>{
+          const data = ev.target.result;
+          localStorage.setItem('logo_dataurl', data);
+          logoImg.src = data;
+          logoImg.style.display = 'block';
+          document.querySelector('.brand-mark').style.background='transparent';
+          document.getElementById('logo-fallback').style.display='none';
+        };
+        reader.readAsDataURL(file);
+      });
+      const params = new URLSearchParams(location.search);
+      if(params.get('stripe')){ localStorage.setItem('stripe_link', params.get('stripe')); stripeBtn.href = params.get('stripe'); }
+      if(params.get('paypal')){ localStorage.setItem('paypal_link', params.get('paypal')); paypalBtn.href = params.get('paypal'); }
+      if(params.get('ga')){ localStorage.setItem('ga4_id', params.get('ga')); }
+    });
+  </script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Express Portes de Garage","email":"mailto:construction2177@yahoo.com","telephone":"+1-514-991-6682","areaServed":["Montréal","Rive-Sud","West Island"],"address":{"@type":"PostalAddress","addressLocality":"Montréal","addressRegion":"QC","addressCountry":"CA"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"}],"priceRange":"$$"}
+  </script>
+</head>
+<body data-lang="fr">
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-mark">
+          <img id="logo-img" alt="Logo" />
+          <span id="logo-fallback">E</span>
+        </div>
+        <div>
+          <div>Express Portes de Garage</div>
+          <small class="muted">Montréal • Rive-Sud • West Island</small>
+        </div>
+      </div>
+      <div class="cta-group">
+        <a class="btn" href="mailto:construction2177@yahoo.com" aria-label="Email">✉️ Email</a>
+        <a class="btn primary" href="tel:+15149916682" aria-label="Call 514-991-6682">📞 514-991-6682</a>
+        <div class="lang-toggle" role="tablist" aria-label="Language">
+          <button id="lang-fr" class="pill active" data-set-lang="fr" role="tab" aria-selected="true">🇨🇦🇫🇷 FR</button>
+          <button id="lang-en" class="pill" data-set-lang="en" role="tab" aria-selected="false">🇨🇦🇬🇧 EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero">
+      <div class="hero-card">
+        <span class="badge fr">Service local à Montréal</span>
+        <span class="badge en">Local service in Montreal</span>
+        <h1 class="fr">Installation & Réparation de portes de garage</h1>
+        <h1 class="en">Garage Door Installation & Repair</h1>
+        <p class="sub fr">Ressorts, câbles, ouvre-portes, entretien. Rive-Sud & West Island.</p>
+        <p class="sub en">Springs, cables, openers, maintenance. South Shore & West Island.</p>
+        <div class="cta-group" style="margin-top:.9rem">
+          <a class="btn primary" href="tel:+15149916682">📞 514-991-6682</a>
+          <a class="btn danger" href="#contact">📩 <span class="fr">Soumission</span><span class="en">Quote</span></a>
+        </div>
+        <ul class="list fr">
+          <li>Pièces de qualité & garantie claire</li>
+          <li>Visite le jour même lorsque possible</li>
+          <li>Techniciens expérimentés, prix transparents</li>
+        </ul>
+        <ul class="list en">
+          <li>Quality parts & clear warranty</li>
+          <li>Same-day visits when possible</li>
+          <li>Experienced techs, transparent pricing</li>
+        </ul>
+      </div>
+      <div class="illus" aria-hidden="true">
+        <svg class="door" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Garage door illustration">
+          <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0%" stop-color="#e5e7eb"/><stop offset="100%" stop-color="#cbd5e1"/></linearGradient></defs>
+          <rect x="20" y="40" width="760" height="460" rx="18" fill="url(#g1)" stroke="#94a3b8"/>
+          <rect x="50" y="80" width="700" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+          <rect x="50" y="180" width="700" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+          <rect x="50" y="280" width="700" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+          <rect x="50" y="380" width="700" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="two-col">
+        <div class="col">
+          <h2 class="fr">Services</h2><h2 class="en">Services</h2>
+          <div class="grid cols-2">
+            <div class="card"><h3 class="fr">Réparation de ressorts</h3><h3 class="en">Spring Repair</h3>
+              <p class="muted fr">Remplacement sécuritaire & équilibrage.</p>
+              <p class="muted en">Safe replacement & balancing.</p></div>
+            <div class="card"><h3 class="fr">Câbles & galets</h3><h3 class="en">Cables & Rollers</h3>
+              <p class="muted fr">Câbles effilochés, galets usés, rails.</p>
+              <p class="muted en">Frayed cables, worn rollers, tracks.</p></div>
+            <div class="card"><h3 class="fr">Ouvre-portes</h3><h3 class="en">Openers</h3>
+              <p class="muted fr">Wi‑Fi, batteries, claviers, sécurité.</p>
+              <p class="muted en">Wi‑Fi, battery backup, keypads.</p></div>
+            <div class="card"><h3 class="fr">Portes neuves</h3><h3 class="en">New Doors</h3>
+              <p class="muted fr">Mesure, style, installation pro.</p>
+              <p class="muted en">Measuring, style, pro install.</p></div>
+          </div>
+        </div>
+        <div class="col">
+          <h2 class="fr">Zones desservies</h2><h2 class="en">Service Areas</h2>
+          <p class="muted fr">Montréal, Rive-Sud (Brossard, Longueuil) & West Island (Pointe‑Claire, D.D.O.).</p>
+          <p class="muted en">Montreal, South Shore (Brossard, Longueuil) & West Island (Pointe‑Claire, D.D.O.).</p>
+          <div class="card">
+            <h3 class="fr">Pourquoi nous choisir ?</h3><h3 class="en">Why choose us?</h3>
+            <span class="tag fr">Devis gratuits</span><span class="tag en">Free quotes</span>
+            <span class="tag fr">Pièces durables</span><span class="tag en">Durable parts</span>
+            <span class="tag fr">Travail garanti</span><span class="tag en">Guaranteed work</span>
+            <span class="tag fr">Ponctuels & propres</span><span class="tag en">On-time & tidy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="card">
+        <h2 class="fr">Paiement en ligne</h2><h2 class="en">Online Payment</h2>
+        <p class="muted fr">Payez un dépôt de service ou une facture en toute sécurité.</p>
+        <p class="muted en">Pay a service deposit or invoice securely.</p>
+        <div class="pay-box">
+          <a id="pay-stripe" class="btn primary" href="#" target="_blank" rel="noopener">💳 Stripe</a>
+          <a id="pay-paypal" class="btn" href="#" target="_blank" rel="noopener">🅿️ PayPal</a>
+          <a class="btn" href="#contact">📄 <span class="fr">Besoin d'une facture ?</span><span class="en">Need an invoice?</span></a>
+        </div>
+        <p class="note fr">Cliquez ⚙️ en bas à droite pour configurer vos liens Stripe/PayPal.</p>
+        <p class="note en">Click ⚙️ at bottom-right to set your Stripe/PayPal links.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="container section">
+      <div class="grid cols-2">
+        <div class="card">
+          <h2 class="fr">Contact</h2><h2 class="en">Contact</h2>
+          <p><strong>Express Portes de Garage</strong><br/>📍 Montréal, QC<br/>📞 <a href="tel:+15149916682">514-991-6682</a><br/>✉️ <a href="mailto:construction2177@yahoo.com">construction2177@yahoo.com</a></p>
+          <p class="muted fr">Appelez, envoyez un courriel, ou utilisez le formulaire.</p>
+          <p class="muted en">Call, email, or use the form.</p>
+        </div>
+        <div class="card">
+          <h3 class="fr">Formulaire de soumission</h3><h3 class="en">Quote Request Form</h3>
+          <!-- Default mailto keeps it single-file on any host.
+               If you want a backend (recommended), use Formspree:
+               1) Create a form at https://formspree.io/
+               2) Replace action with your endpoint, e.g.: action="https://formspree.io/f/xxxx"
+               3) Set method="POST" and add name attributes.
+          -->
+          <form action="mailto:construction2177@yahoo.com" method="post" enctype="text/plain">
+            <label class="sr-only" for="name">Nom / Name</label>
+            <input id="name" name="Nom / Name" placeholder="Nom / Name" required style="width:100%;padding:.8rem;border:1px solid #cbd5e1;border-radius:10px;margin:.4rem 0;" />
+            <label class="sr-only" for="phone">Téléphone / Phone</label>
+            <input id="phone" name="Téléphone / Phone" placeholder="Téléphone / Phone" style="width:100%;padding:.8rem;border:1px solid #cbd5e1;border-radius:10px;margin:.4rem 0;" />
+            <label class="sr-only" for="email">Courriel / Email</label>
+            <input type="email" id="email" name="Courriel / Email" placeholder="Courriel / Email" required style="width:100%;padding:.8rem;border:1px solid #cbd5e1;border-radius:10px;margin:.4rem 0;" />
+            <textarea name="Message" rows="5" placeholder="Décrivez le problème / Describe the issue" style="width:100%;padding:.8rem;border:1px solid #cbd5e1;border-radius:10px;margin:.4rem 0;"></textarea>
+            <button class="btn primary" type="submit">📩 <span class="fr">Envoyer</span><span class="en">Send</span></button>
+          </form>
+          <p class="note fr">Astuce : joignez le code postal et des photos pour une réponse rapide.</p>
+          <p class="note en">Tip: include postal code and photos for a faster reply.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="split">
+        <div><strong>Express Portes de Garage</strong><br/><span class="muted">Montréal, QC • Rive-Sud • West Island</span></div>
+        <div><div><a href="tel:+15149916682">📞 514-991-6682</a></div><div><a href="mailto:construction2177@yahoo.com">✉️ construction2177@yahoo.com</a></div></div>
+      </div>
+      <p class="copyright">© <span id="y"></span> Express Portes de Garage. <span class="fr">Tous droits réservés.</span><span class="en">All rights reserved.</span></p>
+    </div>
+    <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  </footer>
+
+  <!-- Floating Admin button & modal -->
+  <button id="admin-open" class="admin-fab" title="Admin">⚙️</button>
+  <div id="admin-modal" class="modal" aria-hidden="true">
+    <div class="panel">
+      <h3>Admin — Quick Setup</h3>
+      <div class="row">
+        <label for="f-stripe">Stripe Payment Link</label>
+        <input id="f-stripe" type="url" placeholder="https://buy.stripe.com/..." />
+      </div>
+      <div class="row">
+        <label for="f-paypal">PayPal Link (PayPal.me or Checkout URL)</label>
+        <input id="f-paypal" type="url" placeholder="https://www.paypal.me/yourname/100" />
+      </div>
+      <div class="row">
+        <label for="f-ga">Google Analytics 4 Measurement ID</label>
+        <input id="f-ga" type="text" placeholder="G-XXXXXXXXXX" />
+      </div>
+      <div class="row">
+        <label for="f-logo">Logo Image (square works best)</label>
+        <input id="f-logo" type="file" accept="image/*" />
+      </div>
+      <div class="actions">
+        <button id="admin-clear" class="btn">Clear</button>
+        <button id="admin-close" class="btn">Close</button>
+        <button id="admin-save" class="btn primary">Save</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
