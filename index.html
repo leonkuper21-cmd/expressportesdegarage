@@ -5,33 +5,144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Express Portes de Garage — Montréal & Rive Sud | Express Garage Doors — Montreal & South Shore</title>
   <meta name="description" content="Installation & réparation de portes de garage / Garage door installation & repair — Montréal & Rive Sud / Montreal & South Shore. Call or text: 514-991-6682." />
-  <link rel="stylesheet" href="assets/style.css"/>
+  <style>
+    :root{ --blue:#1157b0; --red:#d51f29; --dark:#0f2337; --light:#f7f9fc; --btn:#0b57d0; --btn-t:#ffffff; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#12202e;background:#fff;line-height:1.5}
+    a{color:inherit;text-decoration:none}
+
+    /* Top bar with menu */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:9998;
+      background:#ffffffee;
+      backdrop-filter:blur(6px);
+      border-bottom:1px solid #e2e8f0;
+    }
+    .topbar-inner{
+      max-width:1024px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:8px 16px;
+      gap:10px;
+    }
+    .logo-mini{
+      font-weight:800;
+      font-size:15px;
+      white-space:nowrap;
+    }
+    .main-nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      font-size:14px;
+    }
+    .nav-link{
+      padding:6px 10px;
+      border-radius:999px;
+      text-decoration:none;
+      border:1px solid transparent;
+    }
+    .nav-link:hover{
+      border-color:#cbd5e1;
+      background:#f8fafc;
+    }
+
+    .lang-switch{
+      display:flex;
+      gap:6px;
+      align-items:center;
+    }
+    .lang-switch button{
+      padding:4px 10px;
+      font-size:13px;
+      font-weight:700;
+      border-radius:999px;
+      border:1px solid var(--btn);
+      background:#ffffff;
+      color:var(--btn);
+      cursor:pointer;
+    }
+    .lang-switch button.active{
+      background:var(--btn);
+      color:#ffffff;
+    }
+
+    .hero{
+      background: linear-gradient(90deg, var(--red) 0%, #f0c4c7 20%, #ffffff 50%, #c6d6ef 80%, var(--blue) 100%);
+      color:#091825; text-align:center; padding:56px 16px 28px;
+    }
+    .hero h1{margin:0 0 8px;font-size: clamp(28px,6vw,56px); font-weight:800;}
+    .hero p.sub{margin:6px 0 10px; font-size: clamp(16px,2.8vw,24px); font-weight:600}
+    .hero .phone{display:inline-flex; align-items:center; gap:10px; font-size: clamp(18px,3.2vw,28px); font-weight:800; margin:8px 0 18px}
+    .actions{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:8px 0 0}
+    .btn{display:inline-block; padding:14px 20px; border-radius:12px; background:var(--btn); color:var(--btn-t); font-weight:700; font-size:16px; box-shadow:0 6px 16px rgba(0,0,0,.18); transition:.2s transform ease, .2s opacity ease;}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.outline{background:#ffffff;color:var(--btn);border:2px solid var(--btn)}
+
+    main{max-width:1024px;margin:0 auto;padding:24px 16px 60px}
+    section{background:#ffffff;border:1px solid #e6eef7;border-radius:16px;padding:18px 16px;margin:14px 0;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+    h2{margin:0 0 12px;font-size: clamp(20px,3.2vw,28px); color:var(--dark)}
+    ul.services{padding-left:18px; margin:8px 0}
+    ul.services li{margin:6px 0}
+
+    form .row{display:grid; grid-template-columns:1fr; gap:12px}
+    @media (min-width:720px){ form .row{grid-template-columns:1fr 1fr} }
+    label{font-weight:600; font-size:14px}
+    input, select, textarea{width:100%; padding:12px 12px; border:1px solid #cfd8e3; border-radius:10px; font:inherit; background:#fbfdff;}
+    textarea{min-height:120px; resize:vertical}
+    .notice{font-size:12px; color:#4a5b71}
+    .submitbar{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:6px}
+    .ok{color:#0b7a28; font-weight:700; display:none}
+    .err{color:#b00020; font-weight:700; display:none}
+    footer{padding:24px 16px 48px; text-align:center; color:#4a5b71}
+    .brand{font-weight:800}
+    .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#0b7a28;color:#fff;padding:10px 14px;border-radius:10px;display:none;box-shadow:0 8px 18px rgba(0,0,0,.2);z-index:9999}
+
+    .guides-intro{font-size:14px;color:#42526b;margin-bottom:10px}
+    .guide-block{margin-top:10px;border-top:1px solid #e0e7f1;padding-top:10px}
+    .guide-block h3{margin:6px 0;font-size:18px}
+    .guide-block h4{margin:6px 0;font-size:15px}
+    .guide-steps{padding-left:18px;font-size:14px;margin:4px 0}
+    .guide-steps li{margin:4px 0}
+
+    .chip{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid #cfd8e3;margin:4px 6px 0 0;font-size:13px;background:#f7f9fc;}
+    .chip input{margin-right:4px}
+
+    /* Языковые классы */
+    .fr-only{}
+    .en-only{}
+    .lang-fr .en-only{display:none;}
+    .lang-en .fr-only{display:none;}
+  </style>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
 </head>
-<body>
+<body class="lang-fr">
 
-  <!-- TOP NAV -->
-  <div class="topbar">
+  <!-- Верхнее меню -->
+  <header class="topbar">
     <div class="topbar-inner">
-      <div class="nav-logo">Express Portes de Garage</div>
-      <nav class="nav-menu">
-        <a href="index.html" class="active">Home / Accueil</a>
-        <a href="services.html">Services</a>
-        <a href="gallery.html">Gallery / Photos</a>
-        <a href="about.html">About / À propos</a>
-        <a href="#quote">Contact</a>
+      <div class="logo-mini">Express Portes de Garage</div>
+      <nav class="main-nav">
+        <a href="#home"      id="navHome"      class="nav-link">Accueil</a>
+        <a href="#services"  id="navServices"  class="nav-link">Services</a>
+        <a href="#locations" id="navLocations" class="nav-link">Zones</a>
+        <a href="#about"     id="navAbout"     class="nav-link">À propos</a>
+        <a href="#contacts"  id="navContacts"  class="nav-link">Contact</a>
       </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <button id="switch-fr" class="active" aria-pressed="true">FR</button>
+        <button id="switch-en" aria-pressed="false">EN</button>
+      </div>
     </div>
-  </div>
-
-  <!-- Language Switch -->
-  <div class="lang-switch" aria-label="Language switch">
-    <button id="switch-fr" class="active" aria-pressed="true">FR</button>
-    <button id="switch-en" aria-pressed="false">EN</button>
-  </div>
+  </header>
 
   <!-- HERO -->
-  <header class="hero">
+  <header class="hero" id="home">
     <h1 id="title">Express Portes de Garage</h1>
     <p class="sub" id="subtitle"></p>
     <div class="phone">📞 <a href="tel:+15149916682">514-991-6682</a></div>
@@ -42,10 +153,133 @@
   </header>
 
   <main>
-    <!-- SERVICES SHORT -->
+    <!-- SERVICES -->
     <section id="services">
       <h2 id="servicesTitle"></h2>
       <ul class="services" id="servicesList"></ul>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section id="locations">
+      <h2 id="locationsTitle"></h2>
+      <p id="locationsText"></p>
+    </section>
+
+    <!-- GUIDES / HOW-TO -->
+    <section id="guides">
+      <h2 id="guidesTitle"></h2>
+      <p class="guides-intro fr-only" id="guidesIntroFR"></p>
+      <p class="guides-intro en-only" id="guidesIntroEN"></p>
+
+      <div class="guide-block" id="guide-springs">
+        <h3 id="guideSpringsTitle"></h3>
+
+        <div class="fr-only">
+          <h4>Quand faut-il appeler un technicien&nbsp;?</h4>
+          <ul class="guide-steps">
+            <li>La porte est très lourde, presque impossible à lever à la main.</li>
+            <li>Vous entendez un gros «&nbsp;bang&nbsp;» dans le garage, et la porte ne s’ouvre plus.</li>
+            <li>Les ressorts sont visiblement cassés ou séparés en deux.</li>
+          </ul>
+          <p class="guides-intro">
+            Pour les ressorts cassés, la solution la plus sûre est d’appeler un technicien.<br/>
+            Appelez / textez : <a href="tel:+15149916682">514-991-6682</a>
+          </p>
+        </div>
+
+        <div class="en-only">
+          <h4>When should you call a technician?</h4>
+          <ul class="guide-steps">
+            <li>The door feels extremely heavy and is hard to lift by hand.</li>
+            <li>You heard a loud “bang” in the garage and the door no longer opens.</li>
+            <li>Springs are visibly broken or split in two.</li>
+          </ul>
+          <p class="guides-intro">
+            For broken springs, the safest option is to call a professional.<br/>
+            Call / text: <a href="tel:+15149916682">514-991-6682</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="guide-block" id="guide-cables">
+        <h3 id="guideCablesTitle"></h3>
+        <div class="fr-only">
+          <h4>Signes de problème de câbles</h4>
+          <ul class="guide-steps">
+            <li>La porte monte de travers.</li>
+            <li>Un côté monte plus haut que l’autre.</li>
+            <li>Les câbles sont effilochés ou sortis de la poulie.</li>
+          </ul>
+          <p class="guides-intro">
+            Dans ce cas, n’utilisez plus la porte jusqu’à inspection — elle peut sortir des rails.
+          </p>
+        </div>
+        <div class="en-only">
+          <h4>Signs of cable issues</h4>
+          <ul class="guide-steps">
+            <li>The door goes up crooked.</li>
+            <li>One side lifts higher than the other.</li>
+            <li>Cables are frayed or off the drum.</li>
+          </ul>
+          <p class="guides-intro">
+            In this situation, stop using the door until it is checked — it can come off the tracks.
+          </p>
+        </div>
+      </div>
+
+      <div class="guide-block" id="guide-opener">
+        <h3 id="guideOpenerTitle"></h3>
+        <div class="fr-only">
+          <h4>Problèmes fréquents</h4>
+          <ul class="guide-steps">
+            <li>La porte ne se ferme pas et revient en arrière.</li>
+            <li>La lumière clignote, mais la porte ne bouge pas.</li>
+            <li>La télécommande fonctionne seulement très près de la porte.</li>
+          </ul>
+        </div>
+        <div class="en-only">
+          <h4>Common issues</h4>
+          <ul class="guide-steps">
+            <li>The door does not close and reverses.</li>
+            <li>The light blinks but the door does not move.</li>
+            <li>The remote works only very close to the door.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="guide-block" id="guide-offtrack">
+        <h3 id="guideOfftrackTitle"></h3>
+        <div class="fr-only">
+          <ul class="guide-steps">
+            <li>Ne forcez pas la porte si elle est sortie des rails.</li>
+            <li>Gardez la zone dégagée (enfants, voiture, outils).</li>
+          </ul>
+          <p class="guides-intro">
+            Besoin d’aide rapidement ? Appelez / textez : <a href="tel:+15149916682">514-991-6682</a>
+          </p>
+        </div>
+        <div class="en-only">
+          <ul class="guide-steps">
+            <li>Do not force the door if it is off-track.</li>
+            <li>Keep the area clear (kids, car, tools).</li>
+          </ul>
+          <p class="guides-intro">
+            Need help quickly? Call / text: <a href="tel:+15149916682">514-991-6682</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 id="aboutTitle"></h2>
+      <p id="aboutText"></p>
+    </section>
+
+    <!-- CONTACTS -->
+    <section id="contacts">
+      <h2 id="contactsTitle"></h2>
+      <p id="contactsText"></p>
     </section>
 
     <!-- FORM -->
@@ -106,24 +340,41 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // ------- Language data -------
     const LANG = {
       fr: {
+        navHome: "Accueil",
+        navServices: "Services",
+        navLocations: "Zones",
+        navAbout: "À propos",
+        navContacts: "Contact",
         subtitle: "Installation & réparation de portes de garage — Montréal & <strong>Rive Sud</strong> — ressorts, câbles, ouvre-portes, sécurité",
-        call: "Appeler / Call Now",
-        text: "Texter / Text Now",
+        call: "Appeler maintenant",
+        text: "Texter maintenant",
         textHref: "sms:+15149916682?body=Bonjour!%20J'ai%20besoin%20d'un%20service%20pour%20porte%20de%20garage.",
         servicesTitle: "Nos Services",
         services: [
           "Réparation de portes de garage résidentielles",
-          "Remplacement de ressorts & câbles",
-          "Réparation de rails & roulettes",
+          "Remplacement de ressorts de porte de garage",
+          "Remplacement et réglage de câbles et sécurité",
           "Installation & réparation d’ouvre-portes (Chamberlain / LiftMaster)",
           "Réglage d’équilibrage & sécurité",
           "Portes de garage bloquées ou sorties des rails",
           "Télécommandes & claviers (keypads)",
           "Service même journée — Montréal & Rive Sud"
         ],
+        locationsTitle: "Zones desservies",
+        locationsText: "Montréal, Rive Sud (Brossard, Longueuil, Saint-Hubert, Boucherville), Châteauguay et environs. Appelez pour vérifier si nous couvrons votre secteur.",
+        guidesTitle: "Guides & conseils",
+        guidesIntroFR: "Cliquez sur une section pour comprendre quand appeler un technicien et quels sont les risques de faire soi-même.",
+        guidesIntroEN: "",
+        guideSpringsTitle: "Ressorts de porte de garage",
+        guideCablesTitle: "Câbles & sécurité",
+        guideOpenerTitle: "Ouvre-portes (Chamberlain / LiftMaster)",
+        guideOfftrackTitle: "Porte hors des rails",
+        aboutTitle: "À propos d’Express Portes de Garage",
+        aboutText: "Entreprise familiale basée à Montréal, en activité depuis 2021. Nous nous concentrons sur un service honnête, des réparations sécuritaires et des solutions adaptées aux hivers québécois.",
+        contactsTitle: "Contact",
+        contactsText: "Téléphone / texto : 514-991-6682 • Courriel : Construction2177@yahoo.com. N’hésitez pas à nous envoyer une photo de votre porte de garage pour un diagnostic rapide.",
         formTitle: "Demander un devis gratuit",
         labelName: "Nom",
         labelPhone: "Téléphone",
@@ -134,38 +385,56 @@
         labelDetails: "Détails",
         notice: "En envoyant, vous acceptez d’être contacté par téléphone, texto ou courriel.",
         submit: "Envoyer",
-        footer: "Montréal & Rive Sud — 514-991-6682",
+        footer: "Montréal & Rive Sud — entreprise familiale depuis 2021 — 514-991-6682",
         subject: "Demande de service — Portes de garage",
         toast_ok: "✔ Envoyé",
         toast_err: "✖ Erreur d’envoi"
       },
       en: {
+        navHome: "Home",
+        navServices: "Services",
+        navLocations: "Locations",
+        navAbout: "About",
+        navContacts: "Contacts",
         subtitle: "Garage door installation & repair — Montreal & <strong>South Shore</strong> — springs, cables, openers, safety",
-        call: "Call Now",
-        text: "Text Now",
+        call: "Call now",
+        text: "Text now",
         textHref: "sms:+15149916682?body=Hello!%20I%20need%20garage%20door%20service.",
         servicesTitle: "Our Services",
         services: [
           "Residential garage door repair",
-          "Spring & cable replacement",
-          "Track & roller repair",
+          "Garage door springs replacement",
+          "Cable and safety adjustment",
           "Opener installation & repair (Chamberlain / LiftMaster)",
           "Balancing & safety tune-ups",
           "Stuck / off-track garage doors",
           "Remotes & keypads setup",
           "Same-day service — Montreal & South Shore"
         ],
-        formTitle: "Request a Free Estimate",
+        locationsTitle: "Service areas",
+        locationsText: "Montreal, South Shore (Brossard, Longueuil, Saint-Hubert, Boucherville), Châteauguay and nearby areas. Call to confirm if we cover your location.",
+        guidesTitle: "Guides & how-to",
+        guidesIntroFR: "",
+        guidesIntroEN: "Click a section to understand when you should call a technician and why some repairs are risky to do yourself.",
+        guideSpringsTitle: "Garage door springs",
+        guideCablesTitle: "Cables & safety",
+        guideOpenerTitle: "Openers (Chamberlain / LiftMaster)",
+        guideOfftrackTitle: "Off-track door",
+        aboutTitle: "About Express Garage Doors",
+        aboutText: "Family-owned company based in Montreal, serving customers since 2021. We focus on honest service, safe repairs, and solutions adapted to tough Quebec winters.",
+        contactsTitle: "Contacts",
+        contactsText: "Phone / text: 514-991-6682 • Email: Construction2177@yahoo.com. You can also send us a photo of your garage door for a quick estimate.",
+        formTitle: "Request a free estimate",
         labelName: "Name",
         labelPhone: "Phone",
         labelEmail: "Email",
-        labelCity: "City / Location",
-        labelService: "Service Required",
-        chips: ["Residential Repair","Springs & Cables","Tracks & Rollers","Opener","Tune-up & Safety","Off-track","Remotes / Keypads"],
-        labelDetails: "Details / Additional Info",
+        labelCity: "City / Area",
+        labelService: "Service required",
+        chips: ["Residential repair","Springs & cables","Tracks & rollers","Opener","Tune-up & safety","Off-track","Remotes / keypads"],
+        labelDetails: "Details / additional info",
         notice: "By sending, you agree to be contacted by phone, text or email.",
-        submit: "Send Request",
-        footer: "Montreal & South Shore — 514-991-6682",
+        submit: "Send",
+        footer: "Montreal & South Shore — family owned since 2021 — 514-991-6682",
         subject: "Garage Door Service Request",
         toast_ok: "✔ Sent",
         toast_err: "✖ Sending error"
@@ -180,34 +449,71 @@
     function render(lang){
       currentLang = lang;
       localStorage.setItem('lang', lang);
+
+      document.body.classList.toggle('lang-fr', lang === 'fr');
+      document.body.classList.toggle('lang-en', lang === 'en');
+
       document.getElementById('switch-fr').classList.toggle('active', lang==='fr');
       document.getElementById('switch-en').classList.toggle('active', lang==='en');
 
+      // меню
+      el('navHome').textContent      = LANG[lang].navHome;
+      el('navServices').textContent  = LANG[lang].navServices;
+      el('navLocations').textContent = LANG[lang].navLocations;
+      el('navAbout').textContent     = LANG[lang].navAbout;
+      el('navContacts').textContent  = LANG[lang].navContacts;
+
+      // hero
       el('subtitle').innerHTML = LANG[lang].subtitle;
       el('ctaCall').textContent = LANG[lang].call;
       ctaText.textContent = LANG[lang].text;
       ctaText.href = LANG[lang].textHref;
+
+      // services
       el('servicesTitle').textContent = LANG[lang].servicesTitle;
       el('servicesList').innerHTML = LANG[lang].services.map(s=>`<li>${s}</li>`).join('');
-      el('formTitle').textContent = LANG[lang].formTitle;
-      el('labelName').textContent = LANG[lang].labelName;
-      el('labelPhone').textContent = LANG[lang].labelPhone;
-      el('labelEmail').textContent = LANG[lang].labelEmail;
-      el('labelCity').textContent = LANG[lang].labelCity;
-      el('labelService').textContent = LANG[lang].labelService;
-      el('labelDetails').textContent = LANG[lang].labelDetails;
-      el('notice').textContent = LANG[lang].notice;
-      el('submitBtn').textContent = LANG[lang].submit;
-      el('footerLine').textContent = LANG[lang].footer;
 
-      // Placeholders
-      el('name').placeholder = (lang==='fr') ? "Votre nom" : "Your name";
+      // locations
+      el('locationsTitle').textContent = LANG[lang].locationsTitle;
+      el('locationsText').textContent  = LANG[lang].locationsText;
+
+      // guides
+      el('guidesTitle').textContent = LANG[lang].guidesTitle;
+      if (LANG[lang].guidesIntroFR) el('guidesIntroFR').textContent = LANG[lang].guidesIntroFR;
+      if (LANG[lang].guidesIntroEN) el('guidesIntroEN').textContent = LANG[lang].guidesIntroEN;
+      el('guideSpringsTitle').textContent  = LANG[lang].guideSpringsTitle;
+      el('guideCablesTitle').textContent   = LANG[lang].guideCablesTitle;
+      el('guideOpenerTitle').textContent   = LANG[lang].guideOpenerTitle;
+      el('guideOfftrackTitle').textContent = LANG[lang].guideOfftrackTitle;
+
+      // about
+      el('aboutTitle').textContent = LANG[lang].aboutTitle;
+      el('aboutText').textContent  = LANG[lang].aboutText;
+
+      // contacts
+      el('contactsTitle').textContent = LANG[lang].contactsTitle;
+      el('contactsText').textContent  = LANG[lang].contactsText;
+
+      // form
+      el('formTitle').textContent   = LANG[lang].formTitle;
+      el('labelName').textContent   = LANG[lang].labelName;
+      el('labelPhone').textContent  = LANG[lang].labelPhone;
+      el('labelEmail').textContent  = LANG[lang].labelEmail;
+      el('labelCity').textContent   = LANG[lang].labelCity;
+      el('labelService').textContent= LANG[lang].labelService;
+      el('labelDetails').textContent= LANG[lang].labelDetails;
+      el('notice').textContent      = LANG[lang].notice;
+      el('submitBtn').textContent   = LANG[lang].submit;
+      el('footerLine').textContent  = LANG[lang].footer;
+
+      // placeholders
+      el('name').placeholder  = (lang==='fr') ? "Votre nom" : "Your name";
       el('phone').placeholder = "+1 514 991 6682";
       el('email').placeholder = (lang==='fr') ? "vous@exemple.com" : "you@example.com";
       el('city').placeholder  = (lang==='fr') ? "Montréal, Brossard, Longueuil…" : "Montreal, Brossard, Longueuil…";
       el('details').placeholder = (lang==='fr') ? "Décrivez la situation…" : "Describe the situation…";
 
-      // Chips
+      // chips
       serviceChips.innerHTML = "";
       LANG[lang].chips.forEach(val => {
         const label = document.createElement('label');
@@ -247,7 +553,8 @@
     function valid(){
       const name = el('name').value.trim();
       const phone = el('phone').value.trim();
-      return !!(name && phone);
+      if (!name || !phone) return false;
+      return true;
     }
 
     let submitting = false;
