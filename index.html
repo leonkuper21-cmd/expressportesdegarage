@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -11,8 +10,10 @@
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#12202e;background:#fff;line-height:1.5}
     a{color:inherit;text-decoration:none}
-    .hero{ background: linear-gradient(90deg, var(--red) 0%, #f0c4c7 20%, #ffffff 50%, #c6d6ef 80%, var(--blue) 100%);
-      color:#091825; text-align:center; padding:56px 16px 28px; }
+    .hero{
+      background: linear-gradient(90deg, var(--red) 0%, #f0c4c7 20%, #ffffff 50%, #c6d6ef 80%, var(--blue) 100%);
+      color:#091825; text-align:center; padding:56px 16px 28px;
+    }
     .hero h1{margin:0 0 8px;font-size: clamp(28px,6vw,56px); font-weight:800;}
     .hero p.sub{margin:6px 0 10px; font-size: clamp(16px,2.8vw,24px); font-weight:600}
     .hero .phone{display:inline-flex; align-items:center; gap:10px; font-size: clamp(18px,3.2vw,28px); font-weight:800; margin:8px 0 18px}
@@ -40,21 +41,24 @@
     .lang-switch button { padding: 6px 12px; font-size: 14px; font-weight: 700; border-radius: 8px; border: 2px solid var(--btn); background: white; color: var(--btn); cursor: pointer; }
     .lang-switch button.active { background: var(--btn); color: white; }
     .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#0b7a28;color:#fff;padding:10px 14px;border-radius:10px;display:none;box-shadow:0 8px 18px rgba(0,0,0,.2);z-index:9999}
+
+    /* Guides */
+    .guides-intro{font-size:14px;color:#42526b;margin-bottom:10px}
+    .guides-list{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 4px;padding:0;list-style:none}
+    .guides-list li{margin:0}
+    .guide-link{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #cfd8e3;font-size:13px;background:#f7f9fc;}
+    .guide-link:hover{border-color:var(--btn);}
+    .guide-block{margin-top:10px;border-top:1px solid #e0e7f1;padding-top:10px}
+    .guide-block h3{margin:6px 0;font-size:18px}
+    .guide-block h4{margin:6px 0;font-size:15px}
+    .guide-steps{padding-left:18px;font-size:14px;margin:4px 0}
+    .guide-steps li{margin:4px 0}
+    .chip{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid #cfd8e3;margin:4px 6px 0 0;font-size:13px;background:#f7f9fc;}
+    .chip input{margin-right:4px}
   </style>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KCTBBX75');</script>
-<!-- End Google Tag Manager -->
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCTBBX75"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
   <!-- Language Switch -->
   <div class="lang-switch" aria-label="Language switch">
     <button id="switch-fr" class="active" aria-pressed="true">FR</button>
@@ -77,6 +81,84 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section id="services">
       <h2 id="servicesTitle"></h2>
       <ul class="services" id="servicesList"></ul>
+    </section>
+
+    <!-- GUIDES / HOW-TO -->
+    <section id="guides">
+      <h2>Guides / Conseils & How-to</h2>
+      <p class="guides-intro">
+        🇫🇷 Cliquez sur un sujet pour voir des explications simples.<br/>
+        🇬🇧 Click on a topic to see a step-by-step explanation.
+      </p>
+      <ul class="guides-list">
+        <li><a class="guide-link" href="#guide-springs">Garage Door Springs</a></li>
+        <li><a class="guide-link" href="#guide-cables">Cables & Safety</a></li>
+        <li><a class="guide-link" href="#guide-opener">Openers (Chamberlain / LiftMaster)</a></li>
+        <li><a class="guide-link" href="#guide-offtrack">Off-track / Jammed Door</a></li>
+      </ul>
+
+      <div class="guide-block" id="guide-springs">
+        <h3>Garage Door Springs / Ressorts de porte de garage</h3>
+        <h4>🇫🇷 Quand faut-il appeler un technicien ?</h4>
+        <ul class="guide-steps">
+          <li>La porte est très lourde, presque impossible à lever à la main.</li>
+          <li>On entend un gros “bang” dans le garage, et la porte ne s’ouvre plus.</li>
+          <li>Les ressorts sont visiblement cassés ou séparés en deux.</li>
+        </ul>
+        <h4>🇬🇧 What you should <u>not</u> do yourself</h4>
+        <ul class="guide-steps">
+          <li>Do not try to loosen torsion springs without proper tools and experience.</li>
+          <li>Do not force the opener if the door is stuck — you can burn the motor.</li>
+          <li>Do not pull the door off the tracks; it can fall and damage the car or injure you.</li>
+        </ul>
+        <p class="guides-intro">
+          👉 For broken springs, the safest solution is to call a professional.  
+          Call / Textez : <a href="tel:+15149916682">514-991-6682</a>
+        </p>
+      </div>
+
+      <div class="guide-block" id="guide-cables">
+        <h3>Câbles & Sécurité / Cables & Safety</h3>
+        <h4>Signs of cable problems / Signes de problème de câbles</h4>
+        <ul class="guide-steps">
+          <li>La porte monte de travers (croche).</li>
+          <li>Un côté monte plus haut que l’autre.</li>
+          <li>Les câbles sont effilochés ou sortis de la poulie.</li>
+        </ul>
+        <p class="guides-intro">
+          🇫🇷 Dans ce cas, ne continuez pas à utiliser la porte — elle peut sortir complètement des rails.<br/>
+          🇬🇧 Stop using the door and keep it closed until it’s checked.
+        </p>
+      </div>
+
+      <div class="guide-block" id="guide-opener">
+        <h3>Ouvre-portes (Chamberlain / LiftMaster) / Openers</h3>
+        <h4>🇫🇷 Problèmes fréquents</h4>
+        <ul class="guide-steps">
+          <li>La porte ne se ferme pas, revient en arrière.</li>
+          <li>La lumière clignote plusieurs fois, mais la porte ne bouge pas.</li>
+          <li>La télécommande fonctionne seulement très près de la porte.</li>
+        </ul>
+        <h4>🇬🇧 Simple checks before you call</h4>
+        <ul class="guide-steps">
+          <li>Check sensors alignment and clean the lenses.</li>
+          <li>Try a fresh battery in the remote.</li>
+          <li>Make sure the door is not locked mechanically.</li>
+        </ul>
+      </div>
+
+      <div class="guide-block" id="guide-offtrack">
+        <h3>Porte hors des rails / Off-track Garage Door</h3>
+        <ul class="guide-steps">
+          <li>🇫🇷 Ne touchez pas aux roulettes et ne forcez pas la porte.</li>
+          <li>🇬🇧 Do not try to pull the door back yourself — panels can bend.</li>
+          <li>Gardez la zone dégagée (enfants, voiture, outils).</li>
+        </ul>
+        <p class="guides-intro">
+          📞 Besoin d’aide rapidement ?  
+          Call / Textez : <a href="tel:+15149916682">514-991-6682</a>
+        </p>
+      </div>
     </section>
 
     <!-- FORM -->
@@ -147,11 +229,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         servicesTitle: "Nos Services",
         services: [
           "Réparation de portes de garage résidentielles",
-          "Remplacement de ressorts & câbles",
-          "Réparation de rails & roulettes",
-          "Installation & réparation d’ouvre-portes (Chamberlain / LiftMaster)",
+          "Remplacement de <a href='#guide-springs'>ressorts de porte de garage</a>",
+          "Remplacement & réglage de <a href='#guide-cables'>câbles & sécurité</a>",
+          "Installation & réparation d’<a href='#guide-opener'>ouvre-portes (Chamberlain / LiftMaster)</a>",
           "Réglage d’équilibrage & sécurité",
-          "Portes de garage bloquées ou sorties des rails",
+          "Portes de garage bloquées ou <a href='#guide-offtrack'>sorties des rails</a>",
           "Télécommandes & claviers (keypads)",
           "Service même journée — Montréal & Rive Sud"
         ],
@@ -161,7 +243,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         labelEmail: "Courriel",
         labelCity: "Ville / Quartier",
         labelService: "Type de service",
-        chips: ["Réparation résidentielle","Ressorts & câbles","Rails & roulettes","Ouvre‑porte","Réglage & sécurité","Hors des rails","Télécommande / Clavier"],
+        chips: ["Réparation résidentielle","Ressorts & câbles","Rails & roulettes","Ouvre-porte","Réglage & sécurité","Hors des rails","Télécommande / Clavier"],
         labelDetails: "Détails",
         notice: "En envoyant, vous acceptez d’être contacté par téléphone, texto ou courriel.",
         submit: "Envoyer",
@@ -178,13 +260,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         servicesTitle: "Our Services",
         services: [
           "Residential garage door repair",
-          "Spring & cable replacement",
-          "Track & roller repair",
-          "Opener installation & repair (Chamberlain / LiftMaster)",
-          "Balancing & safety tune‑ups",
-          "Stuck / off‑track garage doors",
+          "Garage door <a href='#guide-springs'>springs replacement</a>",
+          "<a href='#guide-cables'>Cable & safety</a> repair",
+          "<a href='#guide-opener'>Opener installation & repair</a> (Chamberlain / LiftMaster)",
+          "Balancing & safety tune-ups",
+          "<a href='#guide-offtrack'>Stuck / off-track garage doors</a>",
           "Remotes & keypads setup",
-          "Same‑day service — Montreal & South Shore"
+          "Same-day service — Montreal & South Shore"
         ],
         formTitle: "Request a Free Estimate",
         labelName: "Name",
@@ -192,7 +274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         labelEmail: "Email",
         labelCity: "City / Location",
         labelService: "Service Required",
-        chips: ["Residential Repair","Springs & Cables","Tracks & Rollers","Opener","Tune‑up & Safety","Off‑track","Remotes / Keypads"],
+        chips: ["Residential Repair","Springs & Cables","Tracks & Rollers","Opener","Tune-up & Safety","Off-track","Remotes / Keypads"],
         labelDetails: "Details / Additional Info",
         notice: "By sending, you agree to be contacted by phone, text or email.",
         submit: "Send Request",
@@ -265,7 +347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       setTimeout(()=> toast.style.display='none', 2000);
     }
 
-    // ------- Web3Forms sending with your key (no activation) -------
+    // ------- Web3Forms sending with your key -------
     const WEB3FORMS_ACCESS_KEY = "07d8b155-6e6b-4955-b51d-8202d7c27ada";
     const MAILTO_EMAIL = "Construction2177@yahoo.com";
 
@@ -320,7 +402,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       } catch (err){
         // Fallback
         const data = {}
-        new FormData(form).forEach((v,k)=>{ if (data[k]){ if (!Array.isArray(data[k])) data[k]=[data[k]]; data[k].push(v); } else data[k]=v; });
+        new FormData(form).forEach((v,k)=>{
+          if (data[k]){
+            if (!Array.isArray(data[k])) data[k]=[data[k]];
+            data[k].push(v);
+          } else data[k]=v;
+        });
         if (Array.isArray(data.service)) data.service = data.service.join(', ');
         const lines = [];
         for (const k in data) lines.push(`${k}: ${data[k]}`);
